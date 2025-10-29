@@ -1,10 +1,22 @@
-class DatabaseError(Exception):
+class Error(Exception):
     pass
 
 
-class OperationalError(DatabaseError):
+class DatabaseError(Error):
     pass
 
 
-class NotSupportedError(DatabaseError):
+class OperationalError(Error):
+    pass
+
+
+class ProgrammingError(Error):
+    pass
+
+
+class InterfaceError(Error):
+    pass
+
+
+class NotSupportedError(Error):
     pass

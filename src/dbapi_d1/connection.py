@@ -3,26 +3,32 @@ from .exceptions import NotSupportedError
 
 
 class Connection:
-    def __init__(self, dsn, **kwargs):
-        self.dsn = dsn
+    def __init__(self, account_id: str, api_token: str, database_id: str):
+        self.account_id = account_id
+        self.api_token = api_token
+        self.database_id = database_id
         self.closed = False
-        # TODO: initialize Cloudflare D1 client
+        self._first_connect = True
 
     def cursor(self):
+        self._check_closed()
         return Cursor(self)
+
+    def commit(self):
+        if self._first_connect:
+            # no-op during first connect probe
+            return
+        raise NotSupportedError("D1 does not support rollback")
+
+    def rollback(self):
+        if self._first_connect:
+            # no-op during first connect probe
+            return
+        raise NotSupportedError("D1 does not support rollback")
 
     def close(self):
         self.closed = True
 
-    def commit(self):
-        raise NotSupportedError("D1 does not support commit()")
-
-    def rollback(self):
-        raise NotSupportedError("D1 does not support rollback()")
-
-
-def connect(dsn, **kwargs):
-    """
-    Factory function to create a new D1 connection
-    """
-    return Connection(dsn, **kwargs)
+    def _check_closed(self):
+        if self.closed:
+            raise Exception("Connection is closed.")
