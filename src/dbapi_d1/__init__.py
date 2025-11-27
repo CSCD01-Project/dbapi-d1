@@ -7,6 +7,7 @@ from .exceptions import (
     ProgrammingError,
     InterfaceError,
     NotSupportedError,
+    OperationalError,
 )
 
 __all__ = [
@@ -16,6 +17,7 @@ __all__ = [
     "ProgrammingError",
     "InterfaceError",
     "NotSupportedError",
+    "OperationalError",
 ]
 
 
