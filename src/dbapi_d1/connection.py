@@ -18,7 +18,7 @@ class Connection:
         if self._first_connect:
             # no-op during first connect probe
             return
-        raise NotSupportedError("D1 does not support rollback")
+        raise NotSupportedError("D1 does not support commit")
 
     def rollback(self):
         if self._first_connect:
