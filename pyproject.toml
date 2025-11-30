@@ -4,6 +4,10 @@ version = "0.1.0"
 description = ""
 authors = [
     {name = "Chad Rossouw",email = "chadrossouw7247@gmail.com"}
+    {name = "Murphy Lee",email = "murphylee2004@gmail.com"}
+    {name = "Shreyas Rao",email = "raoshreyas2004@gmail.com"}
+    {name = "Alan Zhang",email = "zhangalan54@gmail.com"}
+    {name = "Daniel Alyoshin",email = "daniel.alyoshin@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.11,<3.12"
